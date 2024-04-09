@@ -1,9 +1,8 @@
-
-#include "dataset3.h"
+#include "dataset50.h"
 #include <stddef.h>
 
 
-void matsum(int N, int M, const data_t A[], const data_t B[], data_t C[])
+void matsum(int N, int M, const int A[], const int B[], int C[])
 {
   int i, j;
 
@@ -16,6 +15,6 @@ void matsum(int N, int M, const data_t A[], const data_t B[], data_t C[])
 
 void main()
 {
-	static data_t results_data[ARRAY_SIZE];
+	static int results_data[ARRAY_SIZE];
 	matsum(DIM_SIZE, DIM_SIZE, input1_data, input2_data, results_data);
 }
