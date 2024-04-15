@@ -36,7 +36,7 @@ module debounce_one_shot(
     STATES NS, PS;
     
     logic [7:0] s_db_count = 8'h00;
-    logic s_count_rst, s_count_inc = 1'b0;
+    logic s_count_rst, s_count_inc;
     
     // Counter block to count the number of clock pulses when enabled  /////////
     always_ff @(posedge CLK) begin

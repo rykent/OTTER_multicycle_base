@@ -72,9 +72,9 @@ module CU_DCDR(
             end
             7'b1100011: begin //B-TYPE
                 case (funct3[2:1])
-                    2'b00: pcSource = {~(br_eq ^ ~funct3[0]), 1'b0};
-                    2'b10: pcSource = {~(br_lt ^ ~funct3[0]), 1'b0};
-                    2'b11: pcSource = {~(br_ltu ^ ~funct3[0]), 1'b0};
+                    2'b00: pcSource = {1'b0, ~(br_eq ^ ~funct3[0]), 1'b0};
+                    2'b10: pcSource = {1'b0, ~(br_lt ^ ~funct3[0]), 1'b0};
+                    2'b11: pcSource = {1'b0, ~(br_ltu ^ ~funct3[0]), 1'b0};
                     default: begin
                     end
                 endcase

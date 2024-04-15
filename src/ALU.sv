@@ -32,10 +32,10 @@ module ALU(
                 RESULT = srcA << srcB[4:0];
             end
             2: begin    //SLT
-                RESULT = $signed(srcA) < $signed(srcB);
+                RESULT = {31'b0, $signed(srcA) < $signed(srcB)};
             end
             3: begin    //SLTU
-                RESULT = srcA < srcB;
+                RESULT = {31'b0, srcA < srcB};
             end
             4: begin    //XOR
                 RESULT = srcA ^ srcB;

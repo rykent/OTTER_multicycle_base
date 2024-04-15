@@ -51,6 +51,7 @@ module OTTER_Wrapper(
    
    // Registers for buffering outputs  /////////////////////////////////////
    logic [15:0] r_SSEG;
+   logic BTN_INTR;
     
    // Declare OTTER_CPU ////////////////////////////////////////////////////
    OTTER_MCU CPU (.RST(s_reset), .INTR(s_INTR), .CLK(clk_50),

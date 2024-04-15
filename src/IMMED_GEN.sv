@@ -17,7 +17,7 @@
 
 
 module IMMED_GEN(
-    input [24:0] INSTRUCT,
+    input [31:0] INSTRUCT,
     output [31:0] U_TYPE,
     output [31:0] I_TYPE,
     output [31:0] S_TYPE,
@@ -25,10 +25,10 @@ module IMMED_GEN(
     output [31:0] B_TYPE
     );
     
-    assign U_TYPE = {INSTRUCT[24:5], 12'b0};
-    assign I_TYPE = {{21{INSTRUCT[24]}}, INSTRUCT[23:13]};
-    assign S_TYPE = {{21{INSTRUCT[24]}}, INSTRUCT[23:18], INSTRUCT[4:0]};
-    assign J_TYPE = {{12{INSTRUCT[24]}}, INSTRUCT[12:5], INSTRUCT[13], INSTRUCT[23:14], 1'b0};
-    assign B_TYPE = {{20{INSTRUCT[24]}}, INSTRUCT[0], INSTRUCT[23:18], INSTRUCT[4:1], 1'b0};
+    assign U_TYPE = {INSTRUCT[31:12], 12'b0};
+    assign I_TYPE = {{21{INSTRUCT[31]}}, INSTRUCT[30:20]};
+    assign S_TYPE = {{21{INSTRUCT[31]}}, INSTRUCT[30:25], INSTRUCT[11:7]};
+    assign J_TYPE = {{12{INSTRUCT[31]}}, INSTRUCT[19:12], INSTRUCT[20], INSTRUCT[30:21], 1'b0};
+    assign B_TYPE = {{20{INSTRUCT[31]}}, INSTRUCT[7], INSTRUCT[30:25], INSTRUCT[11:8], 1'b0};
     
 endmodule

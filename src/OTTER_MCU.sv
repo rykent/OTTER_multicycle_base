@@ -89,7 +89,7 @@ module OTTER_MCU(
     PC PC0 (.PC_WRITE(PCWrite), .PC_DIN(pcmux_to_pc), .PC_RST(reset), .CLK(CLK), .PC_COUNT(pc_bus));
     Memory MEM0 (.MEM_CLK(CLK), .MEM_RDEN1(memRDEN1), .MEM_RDEN2(memRDEN2), .MEM_WE2(memWE2), .MEM_ADDR1(pc_bus[15:2]), .MEM_ADDR2(alu_res_bus), .MEM_DIN2(rs2_bus), .MEM_SIZE(instr_bus[13:12]), .MEM_SIGN(instr_bus[14]), .IO_IN(IOBUS_IN), .IO_WR(IOBUS_WR), .MEM_DOUT1(instr_bus), .MEM_DOUT2(mem_data));
     RF RF0 (.RF_ADR1(instr_bus[19:15]), .RF_ADR2(instr_bus[24:20]), .RF_WA(instr_bus[11:7]), .RF_WD(rfwrmux_to_rf), .RF_EN(regWrite), .CLK(CLK), .RF_RS1(rs1_bus), .RF_RS2(rs2_bus));
-    IMMED_GEN IMMED_GEN0 (.INSTRUCT(instr_bus[31:7]), .U_TYPE(utype_bus), .I_TYPE(itype_bus), .S_TYPE(stype_bus), .J_TYPE(jtype_bus), .B_TYPE(btype_bus));
+    IMMED_GEN IMMED_GEN0 (.INSTRUCT(instr_bus), .U_TYPE(utype_bus), .I_TYPE(itype_bus), .S_TYPE(stype_bus), .J_TYPE(jtype_bus), .B_TYPE(btype_bus));
     BRANCH_ADDR_GEN BADDR_GEN0 (.J_TYPE(jtype_bus), .B_TYPE(btype_bus), .PC(pc_bus), .I_TYPE(itype_bus), .RS1(rs1_bus), .JAL(jal_baddr), .BRANCH(branch_baddr), .JALR(jalr_baddr));
     ALU ALU0 (.srcA(srcAmux_to_alu), .srcB(srcBmux_to_alu), .ALU_FUN(alu_fun), .RESULT(alu_res_bus));
     BRANCH_COND_GEN BCOND_GEN0 (.RS1(rs1_bus), .RS2(rs2_bus), .BR_EQ(bcond_to_cu_eq), .BR_LT(bcond_to_cu_lt), .BR_LTU(bcond_to_cu_ltu));
